@@ -66,10 +66,9 @@ int find_builtin(info_t *info)
 		{"history", _myhistory},
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
-		{"cd", _mycd}
+		{"cd", _mycd},
 		{"alias", _myalias},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 
 	for (i = 0; builtintb1[i].type; i++)
 	{
@@ -81,7 +80,7 @@ int find_builtin(info_t *info)
 		}
 	}
 
-	return (built_in_ret);
+		return (built_in_ret);
 }
 /**
  * find_cmd - finds a command in PATH
@@ -156,7 +155,7 @@ void fork_cmd(info_t *info)
 
 	if (errno == EACCES)
 		exit(126);
-		exit(1);
+	exit(1);
 	}
 	}
 	else

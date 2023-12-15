@@ -20,7 +20,7 @@ int _myexit(info_t *info)
 			_eputchar('\n');
 			return (1);
 		}
-		info->err_num = exist_check;
+		info->err_num = exit_check;
 		return (-2);
 	}
 
@@ -64,8 +64,9 @@ int _mycd(info_t *info)
 		chdir_ret = chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
+	{
 		chdir_ret = chdir(info->argv[1]);
-
+	}
 		if (chdir_ret == -1)
 		{
 		print_error(info, "can't cd to ");
@@ -73,13 +74,12 @@ int _mycd(info_t *info)
 		_eputchar('\n');
 		}
 		else
-{
+		{
+			_setenv(info, "OLDPWD", _getenv(info, "PWD="));
+			_setenv(info, "PWD", getcwd(buffer, sizeof(buffer)));
+		}
 
-	_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-	_setenv(info, "PWD", getcwd(buffer, sizeof(buffer)));
-}
-
-	return (0);
+		return (0);
 }
 /**
  * _myhelp - displays help message (not yet implemented)
