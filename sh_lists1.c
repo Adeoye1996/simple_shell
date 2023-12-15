@@ -90,9 +90,9 @@ size_t print_list(const list_t *h)
  *
  * Return: matching node or null
  */
-list_t *node_starts_with(list_t *node, char *prefix, char c)
+list_t *node_starts_with(list_t *node, const char *prefix, char c)
 {
-	char *p = NULL;
+	const char *p = NULL;
 
 	while (node)
 	{

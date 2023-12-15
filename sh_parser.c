@@ -31,18 +31,12 @@ int is_cmd(info_t *info, char *path)
 char *dup_chars(const char *pathstr, int start, int stop)
 {
 	static char buf[1024];
+	int i = 0, k = 0;
 
-	int k = 0;
-
-	for (int i = start; i < stop; i++)
-
-	{
+	for (k = 0, i = start; i < stop; i++)
 		if (pathstr[i] != ':')
-
 			buf[k++] = pathstr[i];
-	}
-	buf[k] = '\0';
-
+	buf[k] = 0;
 	return (buf);
 }
 

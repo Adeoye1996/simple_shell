@@ -94,10 +94,11 @@ int print_d(int input, int fd)
 char *conver_number(long int num, int base, int flags)
 {
 	static char buffer[50];
-	char sign = 0;
+	char sign =0;
 	char *ptr;
 	unsigned long n = (num < 0 && !(flags & CONVERT_UNSIGNED)) ? -num : num;
 
+	
 	char *array = (flags & CONVERT_LOWERCASE) ? "0123456789abcdef" : "0123456789ABCDEF";
 
 	ptr = &buffer[49];
@@ -111,7 +112,7 @@ char *conver_number(long int num, int base, int flags)
 	} while (n != 0);
 
 	if (num < 0 && !(flags & CONVERT_UNSIGNED))
-		*--ptr = '-';
+		*--ptr = sign;
 
 	return (ptr);
 }
@@ -121,12 +122,12 @@ char *conver_number(long int num, int base, int flags)
  */
 void remove_comments(char *buf)
 {
-	for (int i = 0; buf[i] != '\0'; i++)
-	{
+	int i;
+
+	for (i = 0; buf[i] != '\0'; i++)
 		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{
 			buf[i] = '\0';
 			break;
 		}
-	}
 }

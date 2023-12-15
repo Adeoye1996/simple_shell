@@ -81,7 +81,7 @@ void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
 int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
+char *dup_chars(const char *pathstr, int start, int stop);
 char *find_path(info_t *, char *, char *);
 
 int loophsh(char **);
@@ -91,12 +91,12 @@ int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+int _strlen(const char *s);
+int _strcmp(const char *s1, const char *s2);
+const char *starts_with(const char *haystack, const char *needle);
+char *_strcat(char *dest, const char *src);
 
-char *_strcpy(char *, char *);
+char *_strcpy(char *, const char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
@@ -147,8 +147,8 @@ int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
 char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+int _unsetenv(info_t *info, const char *var);
+int _setenv(info_t *info, const char *var, const char *value);
 
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
@@ -165,7 +165,7 @@ void free_list(list_t **);
 size_t list_len(const list_t *);
 char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
+list_t *node_starts_with(list_t *node, const char *prefix, char c);
 ssize_t get_node_index(list_t *, list_t *);
 
 int is_chain(info_t *, char *, size_t *);
