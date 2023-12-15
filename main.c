@@ -1,5 +1,8 @@
 #include "shell.h"
 #include <asm/unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+
 /**
  * main - entry point
  * @ac: argument count
