@@ -104,7 +104,6 @@ int print_d(int input, int fd)
 char *convert_number(long int num, int base, int flags)
 {
 	static char buffer[50];
-	char sign = 0;
 	char *ptr;
 	unsigned long n = (num < 0 && !(flags & CONVERT_UNSIGNED)) ? -num : num;
 	char *array = (flags & CONVERT_LOWERCASE) ? "0123456789abcdef" : "0123456789ABCDEF";
